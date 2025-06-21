@@ -7,21 +7,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
   <style>
     html, body {
-      height: 100%;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       background: radial-gradient(circle at 70% 30%, #ffb6c1 0%, #8f00ff 100%);
-      
     }
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       font-family: 'Orbitron', sans-serif;
       color: #fff;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 5vh;
     }
     /* グリッチエフェクト */
     .glitch {
@@ -32,6 +30,8 @@
       text-transform: uppercase;
       animation: glow 2s infinite alternate;
       z-index: 3;
+      margin-top: 2vh;
+      margin-bottom: 1vh;
     }
     .glitch::before,
     .glitch::after {
@@ -78,10 +78,12 @@
       backdrop-filter: blur(12px);
       padding: 2em 3em;
       margin-top: 2em;
-      max-width: 480px;
+      max-width: 540px;
       z-index: 2;
       position: relative;
       animation: glassfade 2.5s cubic-bezier(.68,-0.55,.27,1.55) 1;
+      width: 90vw;
+      box-sizing: border-box;
     }
     @keyframes glassfade {
       from { opacity: 0; transform: scale(0.5) rotate(-10deg);}
@@ -108,6 +110,7 @@
       animation: float 13s infinite cubic-bezier(.6,0,.4,1);
       background: linear-gradient(135deg, #f0f, #0ff, #ffb6c1 70%);
       filter: blur(4px);
+      z-index: 0;
     }
     @keyframes float {
       0% { transform: translateY(0) scale(1);}
@@ -132,6 +135,45 @@
       background: #fff3;
       color: #8f00ff;
     }
+    /* ニュースセクション */
+    .news {
+      margin-top: 2em;
+    }
+    .news h3 {
+      font-size: 1.3em;
+      color: #ff69b4;
+      margin-bottom: 0.7em;
+      letter-spacing: 0.09em;
+    }
+    .news-item {
+      margin-bottom: 2em;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1em 1.2em;
+      box-shadow: 0 2px 8px #f0f1;
+      transition: background 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .news-title {
+      margin: 0 0 .5em 0;
+      font-size: 1.1em;
+      color: #fff;
+      letter-spacing: 0.08em;
+    }
+    .news-body {
+      margin: 0 0 0.7em 0;
+      color: #f8f8f8;
+      word-break: break-all;
+    }
+    .news-img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px #8f00ff66;
+      margin-bottom: 0.5em;
+      margin-top: .5em;
+    }
     /* Twitterリンク */
     .sns {
       text-align: center;
@@ -145,6 +187,11 @@
       transition: color .2s;
     }
     .sns a:hover { color: #ff69b4; }
+    @media (max-width: 700px) {
+      .glass { padding: 1em 0.5em; }
+      .cherry-svg { width: 90px; height: 90px;}
+      .glitch { font-size: 2.2rem;}
+    }
   </style>
 </head>
 <body>
@@ -172,8 +219,26 @@
       <li>メンバーA</li>
       <li>メンバーB</li>
       <li>メンバーC</li>
-      <!-- 必要に応じて追加 -->
     </ul>
+    <!-- ニュースセクション -->
+    <section class="news">
+      <h3>ニュース</h3>
+      <div class="news-item">
+        <h4 class="news-title">Cherry!!公式サイトオープン！</h4>
+        <p class="news-body">
+          Cherry!!チームの公式Webサイトがついに公開されました。これから最新情報をどんどん発信していきます！
+        </p>
+        <img class="news-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="サイトオープン画像">
+      </div>
+      <div class="news-item">
+        <h4 class="news-title">新メンバー加入！</h4>
+        <p class="news-body">
+          新たに<span style="color:#ff69b4;">メンバーD</span>がチームに加わりました。今後の活躍にご期待ください！
+        </p>
+        <img class="news-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="新メンバー画像">
+      </div>
+      <!-- 必要に応じて.news-itemを追加 -->
+    </section>
     <div class="sns">
       <a href="https://twitter.com/1xcherry_" target="_blank">Twitter @1xcherry_</a>
     </div>
