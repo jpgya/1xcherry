@@ -1,1 +1,182 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Cherry!! 公式サイト</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at 70% 30%, #ffb6c1 0%, #8f00ff 100%);
+      overflow: hidden;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+    /* グリッチエフェクト */
+    .glitch {
+      font-size: 4rem;
+      position: relative;
+      color: #fff;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      animation: glow 2s infinite alternate;
+      z-index: 3;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0; top: 0;
+      width: 100%;
+      overflow: hidden;
+      color: #f0f;
+      z-index: -1;
+      clip-path: inset(0 0 60% 0);
+      animation: glitch-anim 2s infinite alternate-reverse;
+    }
+    .glitch::after {
+      color: #0ff;
+      clip-path: inset(60% 0 0 0);
+      animation: glitch-anim2 2s infinite alternate-reverse;
+    }
+    @keyframes glitch-anim {
+      0% { transform: translate(0,0);}
+      20% { transform: translate(-2px,-2px);}
+      40% { transform: translate(-5px,2px);}
+      60% { transform: translate(3px,1px);}
+      80% { transform: translate(-1px,3px);}
+      100%{ transform: translate(0,0);}
+    }
+    @keyframes glitch-anim2 {
+      0% { transform: translate(0,0);}
+      20% { transform: translate(2px,2px);}
+      40% { transform: translate(5px,-2px);}
+      60% { transform: translate(-3px,-1px);}
+      80% { transform: translate(1px,-3px);}
+      100%{ transform: translate(0,0);}
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #fff, 0 0 40px #f0f, 0 0 80px #0ff;}
+      100% { text-shadow: 0 0 5px #fff, 0 0 10px #0ff, 0 0 30px #f0f;}
+    }
+    .glass {
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 4px 32px 0 rgba(0,0,0,0.37);
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(12px);
+      padding: 2em 3em;
+      margin-top: 2em;
+      max-width: 480px;
+      z-index: 2;
+      position: relative;
+      animation: glassfade 2.5s cubic-bezier(.68,-0.55,.27,1.55) 1;
+    }
+    @keyframes glassfade {
+      from { opacity: 0; transform: scale(0.5) rotate(-10deg);}
+      to { opacity: 1; transform: scale(1) rotate(0);}
+    }
+    /* 3D回転するチェリーSVG */
+    .cherry-svg {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 1em;
+      will-change: transform;
+      animation: spin 7s infinite linear;
+      filter: drop-shadow(0 0 20px #ff69b4) brightness(1.1);
+    }
+    @keyframes spin {
+      to { transform: rotateY(360deg);}
+    }
+    /* 背景アニメーション */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .5;
+      pointer-events: none;
+      animation: float 13s infinite cubic-bezier(.6,0,.4,1);
+      background: linear-gradient(135deg, #f0f, #0ff, #ffb6c1 70%);
+      filter: blur(4px);
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-120vh) scale(1.5);}
+    }
+    /* メンバーリスト */
+    .members {
+      margin-top: 1em;
+      text-align: left;
+    }
+    .members li {
+      background: rgba(255,255,255,0.18);
+      margin-bottom: .3em;
+      padding: .4em .8em;
+      border-radius: 12px;
+      font-size: 1.2em;
+      box-shadow: 0 2px 6px #f0f3;
+      letter-spacing: 0.05em;
+      transition: background .3s;
+    }
+    .members li:hover {
+      background: #fff3;
+      color: #8f00ff;
+    }
+    /* Twitterリンク */
+    .sns {
+      text-align: center;
+      margin-top: 2em;
+    }
+    .sns a {
+      color: #1da1f2;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.3em;
+      transition: color .2s;
+    }
+    .sns a:hover { color: #ff69b4; }
+  </style>
+</head>
+<body>
+  <!-- 背景バブル -->
+  <div class="bubble" style="left:10vw; width:60px; height:60px; animation-delay:0s;"></div>
+  <div class="bubble" style="left:80vw; width:100px; height:100px; animation-delay:4s;"></div>
+  <div class="bubble" style="left:35vw; width:80px; height:80px; animation-delay:2s;"></div>
+  <div class="bubble" style="left:60vw; width:50px; height:50px; animation-delay:1.5s;"></div>
+  <!-- 3DチェリーSVG -->
+  <svg class="cherry-svg" viewBox="0 0 140 140" fill="none">
+    <ellipse cx="70" cy="100" rx="35" ry="35" fill="#e20646"/>
+    <ellipse cx="92" cy="84" rx="19" ry="20" fill="#ff69b4"/>
+    <ellipse cx="50" cy="84" rx="19" ry="20" fill="#e20646" opacity="0.85"/>
+    <rect x="68" y="38" width="4" height="40" rx="2" fill="#3d8b3d"/>
+    <path d="M70 38 Q72 28, 90 25" stroke="#3d8b3d" stroke-width="3" fill="none"/>
+    <circle cx="95" cy="75" r="6" fill="#fff" opacity="0.8"/>
+    <circle cx="57" cy="75" r="4" fill="#fff" opacity="0.7"/>
+  </svg>
+  <div class="glitch" data-text="Cherry!!">Cherry!!</div>
+  <div class="glass">
+    <h2>ようこそ、Cherry!! 公式サイトへ</h2>
+    <p>究極に凝ったデザインで、<b>唯一無二</b>の存在感を放ちます。<br>
+    <span style="color:#ff69b4;">メンバー</span>や最新情報は下記をCheck!</p>
+    <ul class="members">
+      <li>メンバーA</li>
+      <li>メンバーB</li>
+      <li>メンバーC</li>
+      <!-- 必要に応じて追加 -->
+    </ul>
+    <div class="sns">
+      <a href="https://twitter.com/1xcheery_" target="_blank">Twitter @1xcheery_</a>
+    </div>
+  </div>
+</body>
+</html>
