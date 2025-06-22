@@ -279,31 +279,46 @@
           <button class="copy-btn" onclick="copyNewsUrl('news1')">URLコピー</button>
         </div>
       </div>
-      <!-- 追加ニュース例
-      <div class="news-item" id="news2">
-        <h4 class="news-title">新メンバー加入！</h4>
-        <p class="news-body">
-          新たにメンバー〇〇が加入しました！今後の活躍にご期待ください。
-        </p>
-        <img class="news-img" src="YOUR_IMAGE_URL" alt="新メンバー画像">
-        <div class="news-share">
-          <a href="https://jpgya.github.io/1xcherry/#news2" target="_blank" class="share-link">このニュースを共有</a>
-          <button class="copy-btn" onclick="copyNewsUrl('news2')">URLコピー</button>
-        </div>
-      </div>
-      -->
+    
+      <!-- 必要に応じて.news-itemを追加、idも増やしてください -->
     </section>
     <div class="sns">
       <a href="https://twitter.com/1xcherry_" target="_blank">Twitter @1xcherry_</a>
     </div>
   </div>
   <script>
+    // URLコピー機能
     function copyNewsUrl(newsId) {
       const url = `https://jpgya.github.io/1xcherry/#${newsId}`;
       navigator.clipboard.writeText(url).then(() => {
         alert("URLをコピーしました！");
       });
     }
+
+    // ニュース個別表示機能
+    window.addEventListener('DOMContentLoaded', function() {
+      if (location.hash.startsWith('#news')) {
+        const newsId = location.hash.slice(1);
+
+        // ニュース以外の要素を非表示
+        document.querySelector('.glitch')?.remove();
+        document.querySelector('.cherry-svg')?.remove();
+        document.querySelector('.members')?.remove();
+        document.querySelector('.sns')?.remove();
+        document.querySelector('h2')?.remove();
+        document.querySelector('p')?.remove();
+
+        // ニュースリスト内で対象以外を非表示
+        document.querySelectorAll('.news-item').forEach(item => {
+          if (item.id !== newsId) {
+            item.remove();
+          }
+        });
+
+        // 「ニュース」見出しも消したい場合は下記も有効化
+        // document.querySelector('.news h3')?.remove();
+      }
+    });
   </script>
 </body>
 </html>
