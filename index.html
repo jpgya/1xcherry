@@ -21,7 +21,6 @@
       align-items: center;
       padding-bottom: 5vh;
     }
-    /* グリッチエフェクト */
     .glitch {
       font-size: 4rem;
       position: relative;
@@ -89,7 +88,6 @@
       from { opacity: 0; transform: scale(0.5) rotate(-10deg);}
       to { opacity: 1; transform: scale(1) rotate(0);}
     }
-    /* 3D回転するチェリーSVG */
     .cherry-svg {
       width: 140px;
       height: 140px;
@@ -101,7 +99,6 @@
     @keyframes spin {
       to { transform: rotateY(360deg);}
     }
-    /* 背景アニメーション */
     .bubble {
       position: absolute;
       border-radius: 50%;
@@ -116,7 +113,6 @@
       0% { transform: translateY(0) scale(1);}
       100% { transform: translateY(-120vh) scale(1.5);}
     }
-    /* メンバーリスト */
     .members {
       margin-top: 1em;
       text-align: left;
@@ -135,7 +131,6 @@
       background: #fff3;
       color: #8f00ff;
     }
-    /* ニュースセクション */
     .news {
       margin-top: 2em;
     }
@@ -155,6 +150,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      scroll-margin-top: 100px;
     }
     .news-title {
       margin: 0 0 .5em 0;
@@ -174,7 +170,39 @@
       margin-bottom: 0.5em;
       margin-top: .5em;
     }
-    /* Twitterリンク */
+    .news-share {
+      margin-top: 1em;
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+    .share-link {
+      color: #1da1f2;
+      background: rgba(255,255,255,0.1);
+      padding: 0.4em 0.9em;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background .2s;
+    }
+    .share-link:hover {
+      background: #ff69b4;
+      color: #fff;
+    }
+    .copy-btn {
+      background: #fff;
+      color: #8f00ff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.4em 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .copy-btn:hover {
+      background: #ffb6c1;
+      color: #fff;
+    }
     .sns {
       text-align: center;
       margin-top: 2em;
@@ -228,31 +256,54 @@
       <li>Datyon</li>
       <li>KanA</li>
       <li>こう</li>
-　　　　<li>Fate.心</li>
+      <li>Fate.心</li>
       <li>gaota</li>
-      <li>こっぺぱん</li> 
-　　　　<li>ふぃる</li>
-　　　　<li>raru</li>
+      <li>こっぺぱん</li>
+      <li>ふぃる</li>
+      <li>raru</li>
       <li>settenz</li>
       <li>もちもち</li>
-　　　　<li>あっぷる</li>
-　　　</ul>
+      <li>あっぷる</li>
+    </ul>
     <!-- ニュースセクション -->
     <section class="news">
       <h3>ニュース</h3>
-      <div class="news-item">
+      <div class="news-item" id="news1">
         <h4 class="news-title">Cherry!!公式サイトオープン！</h4>
         <p class="news-body">
           Cherry!!チームの公式Webサイトがついに公開されました。これから最新情報をどんどん発信していきます！
         </p>
         <img class="news-img" src="IMG_0298.jpeg" alt="チームアイコン">
+        <div class="news-share">
+          <a href="https://jpgya.github.io/1xcherry/#news1" target="_blank" class="share-link">このニュースを共有</a>
+          <button class="copy-btn" onclick="copyNewsUrl('news1')">URLコピー</button>
+        </div>
       </div>
-   
-      <!-- 必要に応じて.news-itemを追加 -->
+      <!-- 追加ニュース例
+      <div class="news-item" id="news2">
+        <h4 class="news-title">新メンバー加入！</h4>
+        <p class="news-body">
+          新たにメンバー〇〇が加入しました！今後の活躍にご期待ください。
+        </p>
+        <img class="news-img" src="YOUR_IMAGE_URL" alt="新メンバー画像">
+        <div class="news-share">
+          <a href="https://jpgya.github.io/1xcherry/#news2" target="_blank" class="share-link">このニュースを共有</a>
+          <button class="copy-btn" onclick="copyNewsUrl('news2')">URLコピー</button>
+        </div>
+      </div>
+      -->
     </section>
     <div class="sns">
       <a href="https://twitter.com/1xcherry_" target="_blank">Twitter @1xcherry_</a>
     </div>
   </div>
+  <script>
+    function copyNewsUrl(newsId) {
+      const url = `https://jpgya.github.io/1xcherry/#${newsId}`;
+      navigator.clipboard.writeText(url).then(() => {
+        alert("URLをコピーしました！");
+      });
+    }
+  </script>
 </body>
 </html>
