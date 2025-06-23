@@ -505,6 +505,18 @@ blockquote {
     <section class="news">
       <h3>ニュース</h3>
 
+      <div class="news-item" id="topnews1">
+        <h4 class="news-title">ディビジョン2へ!</h4>
+        <p class="news-body">
+          チームメンバーのがおたさんが90位でdivision2へ昇格！
+        </p>
+        <img class="news-img" src="IMG_0298.jpeg" alt="チームアイコン">
+        <div class="news-share">
+          <a href="https://jpgya.github.io/1xcherry/#topnews1" target="_blank" class="share-link">このニュースを共有</a>
+          <button class="copy-btn" onclick="copyNewsUrl('topnews1')">URLコピー</button>
+        </div>
+      </div>
+
       <div class="news-item" id="news3">
         <h4 class="news-title">サイトアップデート！</h4>
         <p class="news-body">
@@ -562,6 +574,30 @@ blockquote {
     // ニュース個別表示機能
     window.addEventListener('DOMContentLoaded', function() {
       if (location.hash.startsWith('#news')) {
+        const newsId = location.hash.slice(1);
+
+        // ニュース以外の要素を非表示
+        document.querySelector('.glitch')?.remove();
+        document.querySelector('.cherry-svg')?.remove();
+        document.querySelector('.members')?.remove();
+        document.querySelector('.sns')?.remove();
+        document.querySelector('h2')?.remove();
+        document.querySelector('p')?.remove();
+
+        // ニュースリスト内で対象以外を非表示
+        document.querySelectorAll('.news-item').forEach(item => {
+          if (item.id !== newsId) {
+            item.remove();
+          }
+        });
+
+        // 「ニュース」見出しも消したい場合は下記も有効化
+        // document.querySelector('.news h3')?.remove();
+      }
+    });
+     // ニュース個別表示機能
+    window.addEventListener('DOMContentLoaded', function() {
+      if (location.hash.startsWith('#to@news')) {
         const newsId = location.hash.slice(1);
 
         // ニュース以外の要素を非表示
