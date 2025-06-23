@@ -505,15 +505,15 @@ blockquote {
     <section class="news">
       <h3>ニュース</h3>
 
-      <div class="news-item" id="topnews1">
+      <div class="news-item" id="news1">
         <h4 class="news-title">ディビジョン2へ!</h4>
         <p class="news-body">
           チームメンバーのがおたさんが90位でdivision2へ昇格！
         </p>
         <img class="news-img" src="https://media.discordapp.net/attachments/1352615606859595827/1385552698887110748/Fortnite_2025_06_19_21_38_08.png?ex=685a7081&is=68591f01&hm=8c7c26cde298ad9e306ecb7a413ad0483f7fd23cc067827774bd6c88d12de9db&=&format=webp&quality=lossless&width=1335&height=751" alt="discord-IMG">
         <div class="news-share">
-          <a href="https://jpgya.github.io/1xcherry/#topnews1" target="_blank" class="share-link">このニュースを共有</a>
-          <button class="copy-btn" onclick="copyNewsUrl('topnews1')">URLコピー</button>
+          <a href="https://jpgya.github.io/1xcherry/#news1" target="_blank" class="share-link">このニュースを共有</a>
+          <button class="copy-btn" onclick="copyNewsUrl('news1')">URLコピー</button>
         </div>
       </div>
 
@@ -595,30 +595,7 @@ blockquote {
         // document.querySelector('.news h3')?.remove();
       }
     });
-     // ニュース個別表示機能
-    window.addEventListener('DOMContentLoaded', function() {
-      if (location.hash.startsWith('#to@news')) {
-        const newsId = location.hash.slice(1);
-
-        // ニュース以外の要素を非表示
-        document.querySelector('.glitch')?.remove();
-        document.querySelector('.cherry-svg')?.remove();
-        document.querySelector('.members')?.remove();
-        document.querySelector('.sns')?.remove();
-        document.querySelector('h2')?.remove();
-        document.querySelector('p')?.remove();
-
-        // ニュースリスト内で対象以外を非表示
-        document.querySelectorAll('.news-item').forEach(item => {
-          if (item.id !== newsId) {
-            item.remove();
-          }
-        });
-
-        // 「ニュース」見出しも消したい場合は下記も有効化
-        // document.querySelector('.news h3')?.remove();
-      }
-    });
+    
   </script>
 </body>
 </html>
