@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>🎮✨ゲームチーム応募フォーム✨🎮</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Zen+Dots&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at 60% 20%, #2d0061 0, #000 90%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Press Start 2P', 'Zen Dots', monospace, sans-serif;
+      color: #fff;
+      position: relative;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: starAnim linear infinite;
+    }
+    @keyframes starAnim {
+      0% { transform: translateY(-20px) scale(1);}
+      100% { transform: translateY(110vh) scale(0.7);}
+    }
+    .neon-form-container {
+      max-width: 480px;
+      margin: 5vw auto 0 auto;
+      background: rgba(30,0,60,0.95);
+      border-radius: 28px;
+      padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+      box-shadow:
+        0 0 60px #00fff0cc,
+        0 0 80px #ff00f7bb inset,
+        0 0 40px 4px #fff1,
+        0 0 0 8px #fff1 inset;
+      border: 7px double #ff00f7;
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+      animation: neon-glow 2.5s alternate infinite;
+    }
+    @keyframes neon-glow {
+      0% { box-shadow: 0 0 60px #00fff0cc,0 0 80px #ff00f7bb inset,0 0 40px 4px #fff1,0 0 0 8px #fff1 inset;}
+      100% { box-shadow: 0 0 80px #ff00f7cc,0 0 60px #00fff0bb inset,0 0 60px 7px #fff2,0 0 0 12px #00fff033 inset;}
+    }
+    .neon-title {
+      font-family: 'Zen Dots', 'Press Start 2P', monospace, sans-serif;
+      font-size: 2.1em;
+      text-align: center;
+      margin-bottom: 1.8em;
+      letter-spacing: 0.1em;
+      background: linear-gradient(90deg,#ff00f7 0%,#fff 40%,#00fff0 100%);
+      background-size: 200% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-stroke: .5px #fff9;
+      text-shadow:
+        0 2px 0 #fff,
+        0 0 15px #00fff0,
+        2px 2px 0 #ff00f7,
+        0 0 38px #fff8;
+      animation: rainbow-title 2s linear infinite alternate;
+      position: relative;
+    }
+    @keyframes rainbow-title {
+      0% {background-position:0% 50%;}
+      100% {background-position:100% 50%;}
+    }
+    .pixel-corner {
+      position: absolute;
+      width: 40px; height: 40px;
+      opacity: 0.7;
+      pointer-events:none;
+      z-index: 2;
+    }
+    .pixel-corner.tl { left: -16px; top: -16px; transform: rotate(8deg);}
+    .pixel-corner.tr { right: -16px; top: -16px; transform: rotate(-8deg);}
+    .pixel-corner.bl { left: -16px; bottom: -16px; transform: rotate(-18deg);}
+    .pixel-corner.br { right: -16px; bottom: -16px; transform: rotate(13deg);}
+    label {
+      font-size: 1.08em;
+      letter-spacing: .05em;
+      text-shadow: 0 1px 0 #fff6, 0 0 8px #00fff0cc;
+      margin-bottom: 0.2em;
+      display: block;
+      font-family: 'Zen Dots','Press Start 2P',monospace;
+    }
+    input, textarea {
+      font-family: inherit;
+      font-size: 1.07em;
+      padding: .7em 1em;
+      border-radius: 13px;
+      border: 2px solid #ff00f7;
+      background: linear-gradient(90deg, #fff2 60%, #00fff044 100%);
+      color: #fff;
+      outline: none;
+      margin-bottom: 1.2em;
+      width: 98%;
+      box-shadow: 0 0 12px #ff00f7aa inset;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.3s;
+      resize: vertical;
+      min-height: 2.7em;
+    }
+    input:focus, textarea:focus {
+      border-color: #00fff0;
+      box-shadow: 0 0 18px #00fff0bb;
+      background: linear-gradient(90deg, #fff4 10%, #00fff066 100%);
+    }
+    .submit-btn {
+      margin: 1.5em auto 0 auto;
+      padding: 0.9em 2.9em;
+      font-size: 1.3em;
+      font-family: inherit;
+      background: linear-gradient(90deg, #ff00f7 30%, #00fff0 100%);
+      color: #fff;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 0 30px #00fff0, 0 0 10px #ff00f7 inset;
+      text-shadow: 0 2px 0 #0008;
+      letter-spacing: .09em;
+      font-weight: bold;
+      transition: transform 0.12s, filter 0.22s, background 0.28s;
+      filter: brightness(1.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .submit-btn:active {
+      transform: scale(0.98);
+      filter: brightness(1.4);
+      background:linear-gradient(90deg,#00fff0 10%,#ff00f7 100%);
+    }
+    .submit-btn::before {
+      content: "▶";
+      color: #fff;
+      position: absolute;
+      left: 1.1em;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.25em;
+      filter: drop-shadow(0 0 8px #ff00f7cc);
+      animation: button-glow 1.2s infinite alternate;
+    }
+    @keyframes button-glow {
+      0% { filter: drop-shadow(0 0 8px #ff00f7cc);}
+      100% { filter: drop-shadow(0 0 14px #00fff0cc);}
+    }
+    .thanks {
+      background: #00fff050;
+      color: #fff;
+      border-radius: 1em;
+      box-shadow: 0 0 8px #ff00f7;
+      padding: 2.6em 1.5em 2.3em 1.5em;
+      text-align: center;
+      font-size: 1.35em;
+      margin-top: 2.5em;
+      animation: pop .9s cubic-bezier(.6,2,0.2,1);
+    }
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0;}
+      100% { transform: scale(1); opacity: 1;}
+    }
+    @media (max-width: 600px) {
+      .neon-form-container { max-width: 99vw; padding: 1.2em 0.7em;}
+      .neon-title { font-size: 1.25em;}
+      input, textarea, .submit-btn { font-size: 1em; }
+      .pixel-corner { width: 25px; height: 25px;}
+    }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <div class="neon-form-container" id="formbox">
+    <img src="https://emojicdn.elk.sh/🟪" class="pixel-corner tl" alt="">
+    <img src="https://emojicdn.elk.sh/🟦" class="pixel-corner tr" alt="">
+    <img src="https://emojicdn.elk.sh/🟩" class="pixel-corner bl" alt="">
+    <img src="https://emojicdn.elk.sh/🟧" class="pixel-corner br" alt="">
+    <div class="neon-title">🎮✨ゲームチーム応募フォーム✨🎮</div>
+    <form id="entryForm">
+      <label>部門名
+        <input type="text" name="team" required placeholder="例: 2nd運営">
+      </label>
+      <label>プレイヤー名
+        <input type="text" name="player" required placeholder="例: Cherry">
+      </label>
+      <label>連絡先（Discord IDやXのリンク）
+        <input type="text" name="contact" required placeholder="例: Cherry#1234">
+      </label>
+      <label>ひとこと
+        <textarea name="message" rows="3" required placeholder="意気込みなど"></textarea>
+      </label>
+      <button class="submit-btn" type="submit">送信</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    // 星空アニメーション
+    const starsEl = document.getElementById('stars');
+    starsEl.style.position = 'fixed';
+    starsEl.style.width = '100vw';
+    starsEl.style.height = '100vh';
+    starsEl.style.left = 0;
+    starsEl.style.top = 0;
+    starsEl.style.zIndex = 0;
+    starsEl.style.pointerEvents = 'none';
+    for(let i=0; i<40; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = 8 + Math.random()*18;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random()*100 + 'vw';
+      s.style.top = (-30 - Math.random()*60) + 'px';
+      s.style.animationDuration = (3+Math.random()*7)+'s';
+      s.style.opacity = 0.45 + Math.random()*0.45;
+      s.style.background = Math.random()>0.5
+        ? 'radial-gradient(circle, #fff 60%, #00fff0 90%)'
+        : 'radial-gradient(circle, #fff 60%, #ff00f7 90%)';
+      starsEl.appendChild(s);
+    }
+
+    // Discord Webhook直送
+    const webhookUrl = "https://discord.com/api/webhooks/1389968671883132998/O1pt-Z3vBDBG7KxLTsObUzUVeOZO7LlOJXU-6ufu6Mgnrmemet4WCb-KptW2ZIe_xqV2"; // ←自分のWebhookに書き換え
+
+    document.getElementById('entryForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const team = fd.get('team');
+      const player = fd.get('player');
+      const contact = fd.get('contact');
+      const message = fd.get('message');
+
+      // Embed形式で凝った通知
+      const payload = {
+        username: "🎮 Game Entry Bot",
+        avatar_url: "https://emojicdn.elk.sh/🎮",
+        embeds: [{
+          title: "✨ 新しいゲームチーム応募！ ✨",
+          description: "応募内容を確認してください！",
+          color: 0xff00f7,
+          fields: [
+            { name: "チーム名", value: team, inline: true },
+            { name: "プレイヤー名", value: player, inline: true },
+            { name: "連絡先", value: contact },
+            { name: "ひとこと", value: message }
+          ],
+          thumbnail: { url: "https://emojicdn.elk.sh/⭐" },
+          image: { url: "https://emojicdn.elk.sh/🎲" },
+          footer: {
+            text: "フォームからの応募",
+            icon_url: "https://emojicdn.elk.sh/⚡"
+          },
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      // Discord Webhookへ送信
+      let success = false;
+      try {
+        const resp = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (resp.ok) success = true;
+      } catch (e) { /* CORSやネットワークエラー */ }
+
+      // 結果表示
+      document.getElementById('entryForm').style.display = "none";
+      document.getElementById('result').innerHTML = `
+        <div class="thanks">
+          🎉 応募ありがとうございます！<br>
+          <span style="font-size:1.1em;display:block;margin-top:0.7em;">
+            Discordへ${success ? "通知しました！"}
+          </span>
+          <div style="font-size:0.9em;margin-top:2em;opacity:0.8;">
+            サーバーエラーにより送信ができませんでした。管理者までお問い合わせください。
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
